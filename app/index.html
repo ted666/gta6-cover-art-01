@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Neon Coast Cover Studio — GTA-style cover art maker</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<main class="app">
+  <section class="controls" aria-label="Cover controls">
+    <header>
+      <h1>Neon Coast<br>Cover Studio</h1>
+      <p>Your photo, made into poster cover art. Pick a layout, a grade and a size, crop each panel, then export the PNG.</p>
+    </header>
+
+    <div class="group">
+      <h2>Photos</h2>
+      <label class="file">Add your photos
+        <input id="photoFile" type="file" accept="image/*" multiple>
+      </label>
+      <div id="photoChips" class="chips" aria-label="Loaded photos"></div>
+      <label class="check"><input id="onePhoto" type="checkbox"> One photo fills every panel</label>
+    </div>
+
+    <div class="group">
+      <h2>Layout</h2>
+      <div id="layouts" class="opts" role="group" aria-label="Layout"></div>
+    </div>
+
+    <div class="group">
+      <h2>Colour grade</h2>
+      <div id="grades" class="swatches" role="group" aria-label="Colour grade"></div>
+    </div>
+
+    <div class="group">
+      <h2>Caption</h2>
+      <label>Title <input id="title" type="text" maxlength="28" value="Neon Shore"></label>
+      <label>Subtitle <input id="subtitle" type="text" maxlength="40" value="a sunset story"></label>
+      <label>Badge <input id="badge" type="text" maxlength="16" value="EST. 2026"></label>
+    </div>
+
+    <div class="group">
+      <h2>Frame</h2>
+      <div id="frames" class="opts" role="group" aria-label="Frame"></div>
+      <label class="check"><input id="grain" type="checkbox" checked> Film grain</label>
+    </div>
+
+    <div class="group">
+      <h2>Crop the selected panel</h2>
+      <p class="hint"><span id="panelLabel">Panel 1 of 4</span> — click a panel, drag to move the photo, scroll to zoom.</p>
+      <label>Zoom <span id="zoomLabel">100%</span>
+        <input id="zoom" type="range" min="100" max="300" value="100">
+      </label>
+      <button id="resetCrop" type="button" class="ghost">Reset this panel's crop</button>
+    </div>
+
+    <div class="group">
+      <h2>Export</h2>
+      <div id="sizes" class="opts" role="group" aria-label="Export size"></div>
+      <button id="export" type="button" class="primary">Export PNG <span id="sizeLabel">1920 x 1080</span></button>
+      <div class="row">
+        <button id="undo" type="button" class="ghost" disabled>Undo</button>
+        <button id="redo" type="button" class="ghost" disabled>Redo</button>
+      </div>
+      <p id="status" role="status"></p>
+    </div>
+  </section>
+
+  <section class="stage" aria-label="Cover preview">
+    <canvas id="cover" width="760" height="428" aria-label="The cover preview"></canvas>
+    <p class="stage-hint">Click a panel to select it. Drag to move the photo inside it.</p>
+  </section>
+</main>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
